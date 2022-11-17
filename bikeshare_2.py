@@ -121,14 +121,6 @@ def station_stats(df):
     print('La estación final más usada es: {}, -> con: {} veces'.format(common_end_station,acc_end_station))
 
     # display most frequent combination of start station and end station trip
-    """"
-    tempo = pd.DataFrame(df[['Start Station','End Station']])
-    tempo1 = tempo.value_counts()
-    most_freq_comb_start = tempo1.index[0][0]
-    most_freq_comb_end = tempo1.index[0][1]
-    acc_freq_comb_station = tempo1[0]
-    print('La combinacion estación inicial: {} con la estación final : {} es la mas frecuente -> con: {} veces'.format(most_freq_comb_start, most_freq_comb_end, acc_freq_comb_station))
-    """
     grouped = pd.DataFrame(df.groupby(['Start Station','End Station'])['End Station'].count())
     grouped.columns = ['Value_counts']
     most_freq_comb_start = grouped.idxmax()[0][0]   
